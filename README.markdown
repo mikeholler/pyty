@@ -12,13 +12,13 @@ alternative existed for Linux.
 Installation
 ------------
 
-pyty was written on/for Ubuntu Linux, but it should work for any Unix-based
-operating system, provided it is running X and has the correct dependancies
+**pyty was written on/for Ubuntu Linux, but it should work for any Unix-based
+operating system**, provided it is running X and has the correct dependancies
 installed.
 
 What are the dependencies, you might ask? Here they are:
-- python-xlib -- a Python library to interface with X
-- mpg123      -- a command-line based mp3 player
+- **python-xlib** -- a Python library to interface with X
+- **mpg123**      -- a command-line based mp3 player
 
 On Ubuntu, these dependencies can be installed by running the following
 command:
@@ -45,9 +45,9 @@ Closing Remarks
 ---------------
 
 I certainly didn't write this without inspiration, and if my program inspires
-you, all the better! Feel free to fork, modify, and pull request. Or, of you're
-not that outgoing, at least open an issue if you'd like a feature added or find
-something wrong with the program. I love collaborating with people, so bring it
-on!
+you, all the better! **Feel free to fork, modify, and/or pull request.** Or, of
+you're not that outgoing, at least open an issue if you'd like a feature added
+or find something wrong with the program. I love collaborating with people, so
+bring it on!
 
 Enjoy!
