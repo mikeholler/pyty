@@ -1,3 +1,41 @@
+#!/usr/bin/python
+#
+# pyty -- a typewriter noise emulator built for Linux and X11
+#
+#   Copyright (C) 2012 Michael Holler <apotheos121 (at) gmail (dot) com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>
+#
+#
+# Thanks to Tim Alexander <dragonfyre13@gmail.com> for his work in writing
+# the pyxhook library packaged with the Simple Python Keylogger. It would
+# have otherwise been a long and arduous process wrestling with the Xlib
+# library without it.
+#
+# Thanks also to Theodore Watson and his NoisyTyper program for inspiring
+# me to make my own, and thanks to Linux for not always having the solution
+# available out of the box so that people like me can contribute.
+#
+# This software requires two non-standard packages:
+# - python-xlib -- The Python interface for X, used to intercept keystrokes
+# - mpg123      -- A command-line mp3 player, used to play the keyboard sounds
+#
+# On Ubuntu Linux, these packages can be installed by running the following
+# line:
+#       sudo apt-get install python-xlib mpg123
+#
+
 from random import choice
 from pyxhook import HookManager
 import os
