@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # pyxhook -- an extension to emulate some of the PyHook library on linux.
 #
@@ -38,7 +38,7 @@ import os
 import re
 import time
 import threading
-import Image
+from PIL import Image
 
 from Xlib import X, XK, display, error
 from Xlib.ext import record
@@ -87,10 +87,10 @@ class HookManager(threading.Thread):
     def run(self):
         # Check if the extension is present
         if not self.record_dpy.has_extension("RECORD"):
-            print "RECORD extension not found"
+            print ("[ERROR] RECORD extension not found", file=sys.stderr)
             sys.exit(1)
         r = self.record_dpy.record_get_version(0, 0)
-        print "RECORD extension version %d.%d" % (r.major_version, r.minor_version)
+        print(("[DEBUG] RECORD extension version %d.%d" % (r.major_version, r.minor_version)), file=sys.stderr)
 
         # Create a recording context; we only want key and mouse events
         self.ctx = self.record_dpy.record_create_context(
@@ -120,7 +120,7 @@ class HookManager(threading.Thread):
         self.local_dpy.flush()
     
     def printevent(self, event):
-        print event
+        print (event)
     
     def HookKeyboard(self):
         pass
@@ -141,9 +141,9 @@ class HookManager(threading.Thread):
         if reply.category != record.FromServer:
             return
         if reply.client_swapped:
-            print "* received swapped protocol data, cowardly ignored"
+            print ("* received swapped protocol data, cowardly ignored")
             return
-        if not len(reply.data) or ord(reply.data[0]) < 2:
+        if not len(reply.data) or reply.data[0] < 2:
             # not an event
             return
         data = reply.data
