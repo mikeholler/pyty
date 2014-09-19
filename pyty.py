@@ -38,6 +38,7 @@
 
 from random import choice
 from pyxhook import HookManager
+import signal, sys, time
 import os
 
 k_backspace = 'backspace.mp3'
@@ -70,8 +71,17 @@ def play_sound(event):
     if sound:
         os.system('mpg123 --quiet sounds/{0} &'.format(sound))
 
+def SigIntHandler(signum, frame):
+    print ('Received SIGINT', file=sys.stderr)
+    hm.cancel()
+    time.sleep(0.2)
+    try:
+        sys.exit(0)
+    except:
+        pass
+
 def main():
-    hm = HookManager()
+    signal.signal (signal.SIGINT, SigIntHandler)
     hm.HookKeyboard()
     hm.HookMouse()
     #hm.KeyDown = play_sound
@@ -79,4 +89,5 @@ def main():
     hm.start()
 
 if __name__ == '__main__':
+    hm = HookManager()
     main()
