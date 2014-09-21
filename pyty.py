@@ -75,10 +75,7 @@ def SigIntHandler(signum, frame):
     print ('Received SIGINT', file=sys.stderr)
     hm.cancel()
     time.sleep(0.2)
-    try:
-        sys.exit(0)
-    except:
-        pass
+    sys.exit(0)
 
 def main():
     signal.signal (signal.SIGINT, SigIntHandler)
@@ -91,3 +88,4 @@ def main():
 if __name__ == '__main__':
     hm = HookManager()
     main()
+    hm.join(1)
