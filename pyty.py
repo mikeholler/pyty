@@ -79,8 +79,8 @@ def SigIntHandler(signum, frame):
 
 def main():
     signal.signal (signal.SIGINT, SigIntHandler)
-    hm.HookKeyboard()
-    hm.HookMouse()
+    #hm.HookKeyboard()
+    #hm.HookMouse()
     #hm.KeyDown = play_sound
     hm.KeyUp = play_sound
     hm.start()
