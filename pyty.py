@@ -72,20 +72,20 @@ def play_sound(event):
         os.system('mpg123 --quiet sounds/{0} &'.format(sound))
 
 def SigIntHandler(signum, frame):
-    print ('Received SIGINT', file=sys.stderr)
-    hm.cancel()
-    time.sleep(0.2)
-    sys.exit(0)
+    print ('Received SIGINT', file=sys.stderr)  # Say to the user what is going on
+    hm.cancel()                                 # Stop hm threads properly
+    time.sleep(0.2)                             # Wait for threads to finish (usefull on small configs)
+    sys.exit(0)                                 # Free memory and exit
 
 def main():
     signal.signal (signal.SIGINT, SigIntHandler)
-    #hm.HookKeyboard()
-    #hm.HookMouse()
+    #hm.HookKeyboard()              # Dummy function in pyxhook
+    #hm.HookMouse()                 # Dummy function in pyxhook
     #hm.KeyDown = play_sound
     hm.KeyUp = play_sound
     hm.start()
 
 if __name__ == '__main__':
-    hm = HookManager()
+    hm = HookManager()  # Make hm global for SigIntHandler to be able to access it
     main()
-    hm.join(1)
+    hm.join(1)          # Get __main__ thread to wait for hm to join
