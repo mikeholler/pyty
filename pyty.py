@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # pyty -- a typewriter noise emulator built for Linux and X11
 #
