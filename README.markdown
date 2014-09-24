@@ -13,7 +13,7 @@ Installation
 ------------
 
 **pyty was written on/for Ubuntu Linux, but it should work for any Unix-based
-operating system**, provided it is running X and has the correct dependancies
+operating system**, provided it is running X and has the correct dependencies
 installed.
 
 What are the dependencies, you might ask? Here they are:
