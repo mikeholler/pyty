@@ -88,4 +88,4 @@ def main():
 if __name__ == '__main__':
     hm = HookManager()  # Make hm global for sigint_handler to be able to access it
     main()
-    hm.join(1)          # Get __main__ thread to wait for hm to join
+    hm.join()          # Get __main__ thread to wait for hm to join
