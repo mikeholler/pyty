@@ -17,29 +17,25 @@ operating system**, provided it is running X and has the correct dependencies
 installed.
 
 What are the dependencies, you might ask? Here they are:
-- **python-xlib** -- a Python library to interface with X
+- **python3-xlib** -- a Python library to interface with X
 - **mpg123**      -- a command-line based mp3 player
 
 On Ubuntu, these dependencies can be installed by running the following
 command:
 
-    sudo apt-get install python-xlib mpg123
+    sudo apt-get install python3-xlib mpg123
 
 ### Starting pyty ###
 
 Starting pyty couldn't be easier. Just open up a command prompt and type:
 
-    python /path/to/pyty.py &
+    python3 /path/to/pyty.py &
+
+Or simply:
+
+    /path/to/pyty.py &
 
 You're good to go!
-
-### Stopping pyty ###
-
-This will be fixed in the future (I just wanted to get this code up on GitHub
-for people to see) but currently the only way to stop pyty without logging out
-or rebooting is by finding its PID by running ``ps u`` and using ``kill`` with
-the PID to end the process. Sorry for the inconvenience!
-
 
 Closing Remarks
 ---------------
