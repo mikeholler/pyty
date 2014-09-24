@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # pyty -- a typewriter noise emulator built for Linux and X11
 #
@@ -38,6 +38,7 @@
 
 from random import choice
 from pyxhook import HookManager
+import signal, sys, time
 import os
 
 k_backspace = 'backspace.mp3'
@@ -70,13 +71,21 @@ def play_sound(event):
     if sound:
         os.system('mpg123 --quiet sounds/{0} &'.format(sound))
 
+def sigint_handler(signum, frame):
+    print ('Received SIGINT', file=sys.stderr)  # Say to the user what is going on
+    hm.cancel()                                 # Stop hm threads properly
+    time.sleep(0.2)                             # Wait for threads to finish (usefull on small configs)
+    sys.exit(0)                                 # Free memory and exit
+
 def main():
-    hm = HookManager()
-    hm.HookKeyboard()
-    hm.HookMouse()
+    signal.signal (signal.SIGINT, sigint_handler)
+    #hm.HookKeyboard()              # Dummy function in pyxhook
+    #hm.HookMouse()                 # Dummy function in pyxhook
     #hm.KeyDown = play_sound
     hm.KeyUp = play_sound
     hm.start()
 
 if __name__ == '__main__':
+    hm = HookManager()  # Make hm global for sigint_handler to be able to access it
     main()
+    hm.join()          # Get __main__ thread to wait for hm to join
