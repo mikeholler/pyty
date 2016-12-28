@@ -38,9 +38,11 @@
 
 from random import choice
 from pyxhook import HookManager
+from os.path import dirname, abspath
 import signal, sys, time
 import os
 
+sounds_dir = os.path.dirname(os.path.realpath(__file__))
 k_backspace = 'backspace.mp3'
 k_return = 'return.mp3'
 k_scrollDown = 'scrollDown.mp3'
@@ -69,7 +71,7 @@ def play_sound(event):
         sound = None
 
     if sound:
-        os.system('mpg123 --quiet sounds/{0} &'.format(sound))
+        os.system('mpg123 --quiet {0}/sounds/{1} &'.format(sounds_dir, sound))
 
 def sigint_handler(signum, frame):
     print ('Received SIGINT', file=sys.stderr)  # Say to the user what is going on
