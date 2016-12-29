@@ -29,11 +29,23 @@ command:
 
 Starting pyty couldn't be easier. Just open up a command prompt and type:
 
-    python3 /path/to/pyty.py &
+```sh
+    $ python3 /path/to/pyty.py &
+```
 
 Or simply:
 
-    /path/to/pyty.py &
+```sh
+    $ /path/to/pyty.py &
+```
+
+In order to execute the script on start up,just create a symbolic link:
+
+```sh
+	$ sudo ln -s /path/to/pyty.py /bin/link-name
+```
+
+Depending on your system, add the `link-name` to the list of programs executed on startup
 
 You're good to go!
 
