@@ -41,13 +41,8 @@ Or simply:
 $ /path/to/pyty.py &
 ```
 
-In order to execute the script on start up,just create a symbolic link:
-
-```sh
-$ sudo ln -s /path/to/pyty.py /bin/link-name
-```
-
-Depending on your system, add the `link-name` to the list of programs executed on startup.
+To run this script on login, add the command to Startup Applications
+(in Ubuntu) or the equivalent for your distribution.
 
 You're good to go!
 
